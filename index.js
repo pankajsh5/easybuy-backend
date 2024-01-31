@@ -85,26 +85,20 @@ server.use(
 server.use(passport.authenticate("session"));
 server.use(
   cors({
-    origin: ["http://localhost:3000", "https://pankaj-e-commerce.onrender.com"],
-    credentials: true,
     exposedHeaders: ["X-Total-Count"],
   })
 );
 
-
 server.use(express.json()); // to parse req.body
-
-server.use("/products", productRouters.router);
-
-
+server.use("/products", isAuth(), productRouters.router);
 // we can also use JWT token for client-only auth
-server.use("/products/search", productRouters.router);
-server.use("/categories", categoriesRouter.router);
-server.use("/brands", brandsRouter.router);
-server.use("/users",  usersRouter.router);
+server.use("/products/search", isAuth(), productRouters.router);
+server.use("/categories", isAuth(), categoriesRouter.router);
+server.use("/brands", isAuth(), brandsRouter.router);
+server.use("/users", isAuth(), usersRouter.router);
 server.use("/auth", authRouter.router);
-server.use("/cart",  cartRouter.router);
-server.use("/orders",  ordersRouter.router);
+server.use("/cart", isAuth(), cartRouter.router);
+server.use("/orders", isAuth(), ordersRouter.router);
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>
   res.sendFile(path.resolve("build", "index.html"))
