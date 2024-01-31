@@ -85,9 +85,12 @@ server.use(
 server.use(passport.authenticate("session"));
 server.use(
   cors({
+    origin: ["http://localhost:3000", "https://pankaj-e-commerce.onrender.com"],
+    credentials: true,
     exposedHeaders: ["X-Total-Count"],
   })
 );
+
 
 server.use(express.json()); // to parse req.body
 
