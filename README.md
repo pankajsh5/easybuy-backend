@@ -48,7 +48,7 @@ To get started  you can simply clone this `EazyBuy ecommerce` repository and ins
 Clone the `EazyBuy ecommerce` repository using git:
 
 ```bash
-git clone git clone https://github.com/piyushkumarg/EazyBuy-ecommerce
+git clone git clone https://github.com/pankajsh5/ecommerce-pankaj
 ```
 
 ### Frontend
