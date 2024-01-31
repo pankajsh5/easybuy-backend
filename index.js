@@ -91,7 +91,7 @@ server.use(
 server.use(express.json()); // to parse req.body
 
 server.use("/products", productRouters.router);
-server.use("/", console.log("server is working"));
+
 
 // we can also use JWT token for client-only auth
 server.use("/products/search", isAuth(), productRouters.router);
